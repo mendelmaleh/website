@@ -7,6 +7,7 @@ tags:
   - systemd
 ---
 *This is how I run my Python bots. This example is valid for CentOS, and it's probably very similar on any other distro. You probably will just need to update the paths.*
+<!--more-->
 
 First, add a `shebang` with the path to `python` (or `python3`, whatever you use) to the top of the file:
 ```bash
