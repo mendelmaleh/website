@@ -1,0 +1,15 @@
+{{- range .Data.Pages.GroupByDate "2006" }}
+  <div class="post-group">
+    <h2 class="post-year" id="{{ .Key }}">{{ .Key }}</h2>
+    <ul class="post-list">
+    {{- range .Pages }}
+      <li>
+        <a class="post-item" href="{{ .Permalink }}">
+          <span>{{ .Title }}</span>
+          <span><time datetime="{{ .Date.Format .Site.Params.datetag }}">{{ .Date.Format .Site.Params.dateshort }}</time></span>
+        </a>
+      </li>
+    {{- end }}
+    </ul>
+  </div>
+{{- end }}

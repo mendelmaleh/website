@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="home-main">
+  <h1 class="home-title">{{ .Site.Title }}</h1>
+  {{ with .Site.Params.homeSubtitle -}}
+  <p class="home-subtitle">{{ . }}</p>
+  {{ end }}
+  <div class="home-social">
+  {{- range .Site.Params.social }}
+    <a href="{{ .url }}" target="_blank">
+      <i class="fab fa-{{ .name }}"></i>
+    </a>
+  {{- end }}
+  </div>
+  {{- range .Site.Menus.main }}
+  <a class="home-item" href="{{ .URL | absURL }}">{{ lower .Name }}</a>
+  {{- end }}
+</div>
+{{ end }}

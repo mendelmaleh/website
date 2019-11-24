@@ -1,0 +1,57 @@
+.post-title
+  margin-bottom: .2em
+  line-height: 1.2
+
+.post-group
+  display: flex
+  flex-wrap: wrap
+
+.post-list
+  flex-grow: 1
+  padding: 0
+  margin: 0
+    bottom: 1em
+  line-height: 2
+  list-style: none
+
+@media (max-width: 760px)
+  .post-list
+    flex: 100%
+
+.post-item
+  display: flex
+  justify-content: space-between
+  background-color: $nord0
+  color: $nord6
+  padding: .4em .8em
+  margin-bottom: .5em
+  border-radius: 4px
+  -webkit-tap-highlight-color: transparent
+  &:hover, &:active
+    background-color: $nord9
+    color: $nord0
+    transition-duration: 0.4s
+    transition-property: color, background-color
+    text-decoration: none
+
+.post-year
+  color: $nord4
+  margin: 0 1em .4em 0
+
+.tag
+  background-color: $nord0
+  color: $nord9
+  padding: .2em .3em
+    top: .1em
+  margin: 0 .1em
+  border-radius: 3px
+  text-decoration: none
+  -webkit-tap-highlight-color: transparent
+  &:hover, &:active
+    background-color: $nord9
+    color: $nord0
+    transition-duration: 0.4s
+    transition-property: color, background-color
+    text-decoration: inherit
+  &:before
+    content: "#"

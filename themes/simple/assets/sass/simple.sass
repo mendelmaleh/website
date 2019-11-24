@@ -1,0 +1,62 @@
+@import "themes/simple/node_modules/nord/src/sass/nord.scss"
+$nordbg: #242933
+
+@import post
+@import home
+
+html
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif
+  font-size: 18px
+  line-height: 1.5 // poole does this for html {}
+
+body
+  background-color: $nordbg
+  color: $nord6
+
+a
+  color: $nord9
+  text-decoration: none
+  &:hover, &:focus
+    text-decoration: underline
+
+code, pre
+  background-color: $nord0
+
+code
+  font-family: 'Oxygen Mono', Menlo, Monaco, "Courier New", monospace
+  font-size: 80%
+  color: $nord9
+  padding: .1em .3em
+  margin: 0 .1em
+  border-radius: 3px
+
+pre
+  padding: .8em
+  border-radius: 4px
+  line-height: 1.2
+  overflow: auto
+  // scrollbar
+  &::-webkit-scrollbar
+    height: 6px
+    border-radius: inherit
+  &::-webkit-scrollbar-thumb
+    border-radius: inherit 
+    background: $nord1
+  code
+    color: inherit
+    padding: 0
+    margin: 0
+
+hr
+  border: 1px solid $nord1
+
+// centers the page content
+.container
+  max-width: 38rem
+  padding:
+    left:  1rem
+    right: 1rem
+  margin:
+    left:  auto
+    right: auto
+

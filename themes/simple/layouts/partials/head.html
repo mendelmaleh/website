@@ -1,0 +1,68 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{- hugo.Generator }}
+
+  {{- $metas := newScratch }}
+  {{- $metas.Set "title" ( print .Title " &middot; " .Site.Title )}}
+  {{- $metas.Set "image" ( print .Site.BaseURL "/logo-512x512.png" )}}
+  {{- if .IsHome }}
+    {{ $metas.Set "title" .Site.Title }}
+  {{ else if .IsNode }}
+    {{ if ( eq .Title "Posts" )}}
+      {{ $metas.Set "desc" "All my posts!" }}
+    {{ end }}
+    {{ if ( eq .Title "Tags" )}}
+      {{ $metas.Set "desc" "All the tags" }}
+    {{ end }}
+  {{ else if .IsPage }}
+    {{- with .Summary }}
+      {{- $metas.Set "desc" . }}
+    {{- end }}
+    {{- with .Description }}
+      {{- $metas.Set "desc" . }}
+    {{- end }}
+  {{- end }}
+
+  {{- /* SEO */}}
+  <title>{{ $metas.Get "title" }}</title>
+  <meta name="description" content="{{ $metas.Get "desc" }}">
+  <meta name="google-site-verification" content="VLBz8j0Voczm670cajOIzV5MQjYUziCdxxhK6nYrJ64" />
+
+  {{- /* OpenGraph */}}
+  <meta name="og:type" content="website">
+  <meta name="og:url" content="{{ .Permalink }}">
+  <meta name="og:title" content="{{ $metas.Get "title" }}">
+  <meta name="og:description" content="{{ $metas.Get "desc" }}">
+  <meta name="og:image" content="{{ $metas.Get "image" }}">
+
+  {{- /* Twitter */}}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="{{ .Permalink }}">
+  <meta name="twitter:title" content="{{ $metas.Get "title" }}">
+  <meta name="twitter:description" content="{{ $metas.Get "desc" }}">
+  <meta name="twitter:image" content="{{ $metas.Get "image" }}">
+ 
+  {{- /* CSS */}}
+  <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}/css/normalize.css">
+  {{- $options := (dict "includePaths" (slice "themes/simple/node_modules/nord")) }}
+  {{ $style := resources.Get "sass/simple.sass" | resources.ExecuteAsTemplate "css/simple.css" . | toCSS $options -}}
+  <link type="text/css" rel="stylesheet" href="{{ $style.Permalink }}">
+
+  {{- /* FontAwesome */}}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+
+  {{- /* Google Fonts */}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700|Oxygen+Mono">
+
+  {{- /* Icons */}}
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  {{- /* Other */}}
+  <meta name="theme-color" content="{{ .Site.Params.themecolor }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>

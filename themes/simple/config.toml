@@ -1,0 +1,6 @@
+[params]
+  datetag = "2006-01-02T15:04:05Z0700"
+  dateshort = "Jan 2"
+  date = "Jan 02, 2006"
+  
+  themecolor = "#242933"

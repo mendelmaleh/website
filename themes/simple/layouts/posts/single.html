@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1 class="post-title">{{ .Title }}</h1>
+<time datetime="{{ .Date.Format .Site.Params.datetag }}">{{ .Date.Format .Site.Params.date }}</time>
+{{ .Content -}}
+<hr class="post-end">
+{{- with .Params.tags }}
+<p>
+  {{- range . }}
+  <a class="tag" href="{{ "tags/" | absURL }}{{ . | urlize }}">{{.}}</a>
+  {{- end }}
+</p>
+{{ end }}
+{{- end }}
